@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Login</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<div class="login-container">
+
+    <h1>Welcome To Shopping Store</h1>
+
+    <input
+    type="email"
+    id="email"
+    placeholder="Enter Email">
+
+    <input
+    type="password"
+    id="password"
+    placeholder="Enter Password">
+
+    <button onclick="login()">
+        Login
+    </button>
+
+</div>
+
+<script>
+
+function login(){
+
+let email =
+document.getElementById("email").value;
+
+let password =
+document.getElementById("password").value;
+
+if(email === "" || password === ""){
+
+alert("Please enter details");
+
+}
+else{
+
+window.location.href =
+"index.html";
+
+}
+
+}
+
+</script>
+
+</body>
+</html>
