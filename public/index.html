@@ -1,78 +1,116 @@
 <!DOCTYPE html>
-<html>
-
+<html lang="en">
 <head>
-    <title>Shopping Store</title>
-    <link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PastelShop</title>
+    <link rel="stylesheet" href="/static/style.css">
 </head>
-
 <body>
 
-<h1 class="title">
-    🛒 My Shopping Store
-</h1>
+<nav class="navbar">
+    <div class="logo">🛍️ PastelShop</div>
 
-<div class="products">
-
-    <div class="card">
-        <h2>iPhone 15</h2>
-        <p>₹80,000</p>
-        <button onclick="addToCart('iPhone 15','₹80,000')">
-            Add To Cart
-        </button>
+    <div class="search-box">
+        <input type="text" id="searchInput" placeholder="Search products..." onkeyup="searchProducts()">
     </div>
 
-    <div class="card">
+    <div class="user-section">
+        <span id="username">👤 Welcome, User</span>
+        <button class="logout-btn" onclick="logout()">Logout</button>
+    </div>
+</nav>
+
+<section class="categories">
+    <button onclick="filterCategory('All')">All</button>
+    <button onclick="filterCategory('Fashion')">Fashion</button>
+    <button onclick="filterCategory('Electronics')">Electronics</button>
+    <button onclick="filterCategory('Beauty')">Beauty</button>
+    <button onclick="filterCategory('Footwear')">Footwear</button>
+    <button onclick="filterCategory('Accessories')">Accessories</button>
+</section>
+
+<div class="dashboard" id="product-list">
+
+    <div class="product-card" data-category="Electronics" data-name="Laptop">
+        <img src="https://images.unsplash.com/photo-1496181133206-80ce9b88a853?w=500">
         <h2>Laptop</h2>
-        <p>₹55,000</p>
-        <button onclick="addToCart('Laptop','₹55,000')">
-            Add To Cart
-        </button>
+        <p>₹50,000</p>
+        <button onclick="addToCart('Laptop')">Add to Cart</button>
     </div>
 
-    <div class="card">
-        <h2>Headphones</h2>
-        <p>₹2,500</p>
-        <button onclick="addToCart('Headphones','₹2,500')">
-            Add To Cart
-        </button>
+    <div class="product-card" data-category="Electronics" data-name="Phone">
+        <img src="https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?w=500">
+        <h2>Phone</h2>
+        <p>₹25,000</p>
+        <button onclick="addToCart('Phone')">Add to Cart</button>
     </div>
 
-    <div class="card">
-        <h2>Smart Watch</h2>
-        <p>₹5,000</p>
-        <button onclick="addToCart('Smart Watch','₹5,000')">
-            Add To Cart
-        </button>
-    </div>
-
-    <div class="card">
+    <div class="product-card" data-category="Footwear" data-name="Shoes">
+        <img src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=500">
         <h2>Shoes</h2>
-        <p>₹3,000</p>
-        <button onclick="addToCart('Shoes','₹3,000')">
-            Add To Cart
-        </button>
+        <p>₹2,500</p>
+        <button onclick="addToCart('Shoes')">Add to Cart</button>
     </div>
 
-    <div class="card">
-        <h2>Bluetooth Speaker</h2>
-        <p>₹4,500</p>
-        <button onclick="addToCart('Bluetooth Speaker','₹4,500')">
-            Add To Cart
-        </button>
+    <div class="product-card" data-category="Accessories" data-name="Watch">
+        <img src="https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=500">
+        <h2>Watch</h2>
+        <p>₹4,000</p>
+        <button onclick="addToCart('Watch')">Add to Cart</button>
+    </div>
+
+    <div class="product-card" data-category="Fashion" data-name="Denim Jacket">
+        <img src="https://images.unsplash.com/photo-1544022613-e87ca75a784a?w=500">
+        <h2>Denim Jacket</h2>
+        <p>₹1,999</p>
+        <button onclick="addToCart('Denim Jacket')">Add to Cart</button>
+    </div>
+
+    <div class="product-card" data-category="Fashion" data-name="Handbag">
+        <img src="https://images.unsplash.com/photo-1594223274512-ad4803739b7c?w=500">
+        <h2>Handbag</h2>
+        <p>₹1,499</p>
+        <button onclick="addToCart('Handbag')">Add to Cart</button>
+    </div>
+
+    <div class="product-card" data-category="Beauty" data-name="Makeup Kit">
+        <img src="https://images.unsplash.com/photo-1596462502278-27bfdc403348?w=500">
+        <h2>Makeup Kit</h2>
+        <p>₹899</p>
+        <button onclick="addToCart('Makeup Kit')">Add to Cart</button>
+    </div>
+
+    <div class="product-card" data-category="Beauty" data-name="Perfume">
+        <img src="https://images.unsplash.com/photo-1541643600914-78b084683601?w=500">
+        <h2>Perfume</h2>
+        <p>₹1,299</p>
+        <button onclick="addToCart('Perfume')">Add to Cart</button>
+    </div>
+
+    <div class="product-card" data-category="Electronics" data-name="Headphones">
+        <img src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=500">
+        <h2>Headphones</h2>
+        <p>₹2,999</p>
+        <button onclick="addToCart('Headphones')">Add to Cart</button>
+    </div>
+
+    <div class="product-card" data-category="Accessories" data-name="Sunglasses">
+        <img src="https://images.unsplash.com/photo-1511499767150-a48a237f0083?w=500">
+        <h2>Sunglasses</h2>
+        <p>₹799</p>
+        <button onclick="addToCart('Sunglasses')">Add to Cart</button>
     </div>
 
 </div>
 
-<br>
+<div class="cart-container">
+    <h2>🛒 Your Cart</h2>
+    <ul id="cart-items"></ul>
+    <button class="buy-btn" onclick="buyNow()">Buy Now</button>
+</div>
 
-<a href="cart.html">
-<button class="cart-btn">
-    Go To Cart 🛒
-</button>
-</a>
-
-<script src="script.js"></script>
+<script src="/static/script.js"></script>
 
 </body>
 </html>
